@@ -1,5 +1,6 @@
 jupyter
 pre-commit
+pandas
 pylint
 pytest
 requests
