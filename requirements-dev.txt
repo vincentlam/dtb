@@ -1,0 +1,5 @@
+jupyter
+pre-commit
+pylint
+pytest
+requests
