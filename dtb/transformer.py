@@ -1,15 +1,16 @@
+import pandas
 from pandas import DataFrame
 
 
 class Transformer:
-    """
-    import pandas as pd
-    from dtb.reader import pd_input
-    src = pd_input('https://ark-funds.com/wp-content/fundsiteliterature/csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv')
-    df = pd.read_csv(src)
-    df[df['date'].isna().cumsum() == 0]
-    """
-
     def __init__(self, df):
         assert isinstance(df, DataFrame), "df needs to be of pandas.DataFrame type!"
         self.df = df
+
+    def drop_rows_from_first_na(self, column_name):
+        self.df = self.df[self.df[column_name].isna().cumsum() == 0]
+
+    def infer_column_to_datetime(self, column_name):
+        self.df[column_name] = pandas.to_datetime(
+            self.df[column_name], infer_datetime_format=True
+        )
