@@ -18,3 +18,11 @@ class Transformer:
 
     def get_first_cell_value_for_column(self, column_name):
         return self.df.iloc[0][column_name]
+
+    def upsert_into(self, target_df):
+        assert isinstance(
+            target_df, DataFrame
+        ), "target_df needs to be of pandas.DataFrame type!"
+        self.df = pandas.concat(
+            [target_df[~target_df.index.isin(self.df.index)], self.df]
+        )
