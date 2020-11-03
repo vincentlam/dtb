@@ -14,3 +14,6 @@ class Transformer:
         self.df[column_name] = pandas.to_datetime(
             self.df[column_name], infer_datetime_format=True
         )
+
+    def get_first_cell_value_for_column(self, column_name):
+        return self.df.iloc[0][column_name]
