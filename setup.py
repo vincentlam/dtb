@@ -14,7 +14,7 @@ setup(
     author="Vincent Lam",
     author_email="vincent@lam.is",
     description="data toolbox",
-    long_description="",
+    long_description="Utilities for ETL tasks using tools like Pandas.",
     long_description_content_type="text/markdown",
     url="https://github.com/vincentlam/dtb",
     packages=find_packages(),
