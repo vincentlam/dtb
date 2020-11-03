@@ -1,11 +1,12 @@
 import pandas
 from pandas import DataFrame
+from copy import deepcopy
 
 
 class Transformer:
     def __init__(self, df):
         assert isinstance(df, DataFrame), "df needs to be of pandas.DataFrame type!"
-        self.df = df
+        self.df = deepcopy(df)
 
     def drop_rows_from_first_na(self, column_name):
         self.df = self.df[self.df[column_name].isna().cumsum() == 0]
